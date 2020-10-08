@@ -12,6 +12,7 @@ class App extends React.Component {
       isLoading:true,
     }  
 
+about=React.createRef();
     componentDidMount(){
 
 
@@ -30,6 +31,11 @@ alert("something went wrong") ;
 
         )
 
+    }
+
+    goToTop =()=>{
+
+      window.scroll(0,this.about.current.scrollTop);
     }
 
     next=() =>{
@@ -105,7 +111,7 @@ searchTerm=term =>{
      <Header category= {this.state.data.category}
              changeCategory={this.changeCategory}
              search={this.searchTerm}/>
-     <div className='d-flex'>
+     <div ref={this.about} className='d-flex'>
      <p className='text-black-50'>
      About {this.state.data.totalResults} results found
      </p>
@@ -133,6 +139,7 @@ searchTerm=term =>{
 
 
      />
+     <button className="btn btn-secondary my-5" onClick={this.goToTop} >GoToTop</button>
 
     </div>)}
 

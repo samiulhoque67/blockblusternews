@@ -1,4 +1,4 @@
-import React from 'react';
+import React  from 'react';
 import {newsCategory} from '../news/index';
 
 class Header extends React.Component {
@@ -6,7 +6,7 @@ class Header extends React.Component {
 		searchTerm:'',
 	};
 
-
+searchRef=React.createRef();
 handleChange= e => {
 	this.setState({searchTerm:e.target.value})
 
@@ -21,9 +21,13 @@ handleKeyPress= e =>{
 
 }
 
+componentDidMount(){
+  this.searchRef.current.focus();
 
-//ac2308eada4e45eb9a8f864712c5ea1f
-//http://newsapi.org/v2/top-headlines
+
+
+}
+
 
 render(){
 	const {category,changeCategory}=this.props;
@@ -33,7 +37,7 @@ return (
 	<h1 className ="mb-4" style={{fontWeight :'300'}}>
 	    Blockbluster Headlines  
 	 </h1>
-	 <input
+	 <input ref={this.searchRef}
 	 type="search" 
 	 className='form-Control'
 	 placeholder="search"
